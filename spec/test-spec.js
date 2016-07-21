@@ -1,5 +1,6 @@
 'use strict';
 const main = require("../main/main.js");
+const fix = require('../spec/fixture.js');
 
 describe('code-barcode', () => {
   it('return formatCode',()=>{
@@ -21,36 +22,15 @@ describe('code-barcode', () => {
   });
   
   it('return correct barcodes', ()=>{
-    const digits = {
-      '0':'||:::',
-      '1':':::||',
-      '2':'::|:|',
-      '3':'::||:',
-      '4':':|::|',
-      '5':':|:|:',
-      '6':':||::',
-      '7':'|:::|',
-      '8':'|::|:',
-      '9':'|:|::'
-    }
+    const digits = fix.loadDigits();
     const barcode = main.covertBarcodes('34',digits);
     
     expect(barcode).toBe('|::||::|::||')
   });
   
   it('should print correct text', () => {
-    const digits = {
-      '0':'||:::',
-      '1':':::||',
-      '2':'::|:|',
-      '3':'::||:',
-      '4':':|::|',
-      '5':':|:|:',
-      '6':':||::',
-      '7':'|:::|',
-      '8':'|::|:',
-      '9':'|:|::'
-    }
+    const digits = fix.loadDigits();
+
     spyOn(console, 'log');
 
     main.convertCodeToBarcode('12345',digits);
