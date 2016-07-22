@@ -2,12 +2,12 @@
 
 function convertCodeToBarcode(code, digits) {
   const formatCode = validateCode(code);
-  
+
   if (formatCode === 'illegalCode') {
     cosole.log('输入不合法！');
   } else {
-    const correctCode = addCheckBit(formatCode);
-    console.log(covertBarcodes(correctCode, digits));
+    const numbers = addCheckBit(formatCode);
+    console.log(covertBarcodes(numbers, digits));
   }
 }
 
@@ -28,16 +28,17 @@ function addCheckBit(formatCode) {
   let numbers = codeItems.map(codeItem => parseInt(codeItem));
   let sum = numbers.reduce((a, b) => a + b);
 
-  return formatCode + (10 - sum % 10);
+  let bit = sum%10!=0 ? (10-sum%10):0;
+  numbers.push(bit);
+
+  return numbers;
 }
 
-function covertBarcodes(correctCode, digits) {
+function covertBarcodes(numbers, digits) {
   let barcodeArray = [];
 
-  for (const codeItem of correctCode.split('')) {
-    if (digits.hasOwnProperty(codeItem)) {
-      barcodeArray.push(digits[codeItem]);
-    }
+  for (const number of numbers) {
+    barcodeArray.push(digits[number.toString()]);
   }
 
   return '|' + barcodeArray.join('') + '|';

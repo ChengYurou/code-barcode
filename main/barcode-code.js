@@ -33,22 +33,19 @@ function covertBarcodeArray(legalBarcode) {
 }
 
 function covertCode(barcodeArray,digits) {
-  let code = '';
-  for(let barcodeItem of barcodeArray) {
-    const digit = digits.find(item => item.digit === barcodeItem);
-    code += digit.key;
-  }
-
-  return code;
+  
+return barcodeArray.map(barcodeItem => digits.find(digit => digit.item===barcodeItem).key).join('');
 }
 
 function checkBit(code) {
   let result = 'wrongCode'
-  let nums = code.split('').map(codeItem => parseInt(codeItem));
-  let sum = nums.reduce((a,b) => a+b);
+  let sum = code.split('').map(codeItem => parseInt(codeItem)).reduce((a,b) => a+b);
   
   if(sum%10 === 0) {
     result = code.substr(0,code.length-1);
+    if(result.length != 5) {
+      result.substr(0,5)+'-'+result.substr(5);
+    }
   }
 
   return result;
