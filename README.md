@@ -4,7 +4,7 @@
 #### 单元测试(unit test)：
 ##### + tasking1:validateCode
 ###### legalInput test:
-input:code:String
+input:code:String br/
 output:formatCode:String
 ###### illegalInput test:
 input:
@@ -27,7 +27,7 @@ output:
 
 ##### + tasking1:validateBarcode
 ###### legalInput test:
-input:\n
+input:
 output:
 ###### illegalInput test:
 input:
