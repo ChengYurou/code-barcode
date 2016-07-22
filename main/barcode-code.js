@@ -28,7 +28,7 @@ function covertBarcodeArray(legalBarcode) {
   for (let index=1; index<legalBarcode.length-1; index+=5){
     barcodeArray.push(legalBarcode.substr(index,5));
   }
-
+   
   return barcodeArray;
 }
 
