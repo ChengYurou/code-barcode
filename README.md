@@ -4,8 +4,8 @@
 #### 单元测试(unit test)：
 ##### + tasking1:validateCode
 ###### legalInput test:
-input:<br> code:String<br>
-output:formatCode:String<br>例如：'45056-1234' ==> '450561234'
+**input:**<br> code:String<br>
+**output:**<br>formatCode:String<br>例如：'45056-1234' ==> '450561234'
 ###### illegalInput test:
 input:<br>
 output:<br>
