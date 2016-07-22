@@ -4,22 +4,22 @@
 #### 单元测试(unit test)：
 ##### + tasking1:validateCode
 ###### legalInput test:
-input:code:String <br>
-output:formatCode:String
+input:<br> code:String<br>
+output:formatCode:String<br>例如：'45056-1234' ==> '450561234'
 ###### illegalInput test:
-input:
-output:
+input:<br>
+output:<br>
 ##### + tasking2:addCheckBit
-input:
-output:
+input:<br>
+output:<br>
 ##### + tasking3:covertBarcodes
-input:
-output:
+input:<br>
+output:<br>
 
 #### 集成测试(integration test)：
 ##### + tasking:convertCodeToBarcode
-input:
-output:
+input:<br>
+output:<br>
 
 ### 2.由条形码转化为邮编(barcode-code)
 
@@ -27,26 +27,26 @@ output:
 
 ##### + tasking1:validateBarcode
 ###### legalInput test:
-input:
-output:
+input:<br>
+output:<br>
 ###### illegalInput test:
-input:
-output:
+input:<br>
+output:<br>
 ##### + tasking2:covertBarcodeArray
-input:
-output:
+input:<br>
+output:<br>
 ##### + tasking3:checkBit
 ###### legalInput test:
-input:
-output:
+input:<br>
+output:<br>
 ###### illegalInput test:
-input:
-output:
+input:<br>
+output:<br>
 
 #### 集成测试(integration test)：
 ##### + tasking:covertBarcodeToCode
-input:
-output:
+input:<br>
+output:<br>
 
 
 
