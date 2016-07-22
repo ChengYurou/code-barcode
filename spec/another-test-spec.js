@@ -1,5 +1,6 @@
 'use strict';
 const main = require("../main/barcode-code.js");
+const fix = require('../spec/fixture.js');
 
 describe('barcode-code', () => {
   it('return formatCode',()=>{
@@ -17,7 +18,6 @@ describe('barcode-code', () => {
   });
 
   it('return barcodeArray', ()=> {
-    // const digits = fix.loadDigits();
     const legalBarcode = '|:::||::|:|::||::|::|:|:|::|:|:|';
     const barcodeArray = main.covertBarcodeArray(legalBarcode);
     const expectArray = [':::||','::|:|','::||:',':|::|',':|:|:',':|:|:'];
@@ -25,42 +25,35 @@ describe('barcode-code', () => {
     expect(barcodeArray).toEqual(expectArray);
   });
   
-  //
-  // it('return correct barcodes', ()=>{
-  //   const digits = {
-  //     '0':'||:::',
-  //     '1':':::||',
-  //     '2':'::|:|',
-  //     '3':'::||:',
-  //     '4':':|::|',
-  //     '5':':|:|:',
-  //     '6':':||::',
-  //     '7':'|:::|',
-  //     '8':'|::|:',
-  //     '9':'|:|::'
-  //   }
-  //   const barcode = main.covertBarcodes('34',digits);
-  //
-  //   expect(barcode).toBe('|::||::|::||')
-  // });
-  //
-  // it('should print correct text', () => {
-  //   const digits = {
-  //     '0':'||:::',
-  //     '1':':::||',
-  //     '2':'::|:|',
-  //     '3':'::||:',
-  //     '4':':|::|',
-  //     '5':':|:|:',
-  //     '6':':||::',
-  //     '7':'|:::|',
-  //     '8':'|::|:',
-  //     '9':'|:|::'
-  //   }
-  //   spyOn(console, 'log');
-  //
-  //   main.convertCodeToBarcode('12345',digits);
-  //
-  //   expect(console.log).toHaveBeenCalledWith('|:::||::|:|::||::|::|:|:|::|:|:|');
-  // });
+  it('return code', ()=> {
+    const digits = fix.loadDigits1();
+    const barcodeArray = [':::||','::|:|','::||:',':|::|',':|:|:',':|:|:'];
+    const code = main.covertCode(barcodeArray,digits);
+    
+    const expectText = '123455'
+    expect(code).toEqual(expectText);
+  });
+  
+  it('return correctcode', ()=> {
+    const correctCode = main.checkBit('123455');
+    
+    expect(correctCode).toBe('12345');
+  })
+  
+  it('return wrongCode', ()=> {
+    const wrongCode = main.checkBit('123456');
+    
+    expect(wrongCode).toBe('wrongCode');
+  });
+
+  it('should print correct Text', ()=> {
+    const digits = fix.loadDigits1();
+    const barcode = '|:::||::|:|::||::|::|:|:|::|:|:|';
+    spyOn(console, 'log');
+    
+    main.covertBarcodeToCode(barcode,digits);
+    
+    expect(console.log).toHaveBeenCalledWith('12345');
+  });
+  
 });
